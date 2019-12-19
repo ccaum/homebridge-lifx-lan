@@ -18,6 +18,8 @@
 //         "resendPacketDelay": 150,         // optional: delay between packages if light did not receive a packet (for setting methods with callback)
 //         "resendMaxTimes": 3,              // optional: resend packages x times if light did not receive a packet (for setting methods with callback)
 //         "debug": false,                   // optional: logs all messages in console if turned on
+//         "lights": ["192.168.2.14","192.168.2.15"] 
+//                                           // optional: Array of bulb IP addresses. This is useful if the lights are on a different network than homebridge
 //         "address": '0.0.0.0'              // optional: specify which ipv4 address to bind to
 //     }
 // ],
@@ -173,7 +175,8 @@ function LifxLanPlatform(log, config, api) {
             messageHandlerTimeout:  this.config.messageHandlerTimeout || 2500,
             resendMaxTimes:         this.config.resendMaxTimes || 3,
             resendPacketDelay:      this.config.resendPacketDelay || 500,
-            address:                this.config.address || '0.0.0.0'
+            address:                this.config.address || '0.0.0.0',
+            lights:                 this.config.lights || []
         });
     }.bind(this));
 }
